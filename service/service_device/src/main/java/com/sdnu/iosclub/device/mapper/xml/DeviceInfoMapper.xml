@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdnu.iosclub.device.mapper.DeviceInfoMapper">
+
+
+    <select id="getDeviceInfoVo" resultType="com.sdnu.iosclub.device.entity.vo.DeviceInfoVo">
+        select d.id,d.qr_code,d.label,d.type,d.lab_id,d.max_use_time,d.disabled,d.batch,d.state,d.current_user_id,
+               ul.name as 'lab_name',
+               dt.name as 'type_name'
+
+
+        from device_info d LEFT JOIN ucenter_laboratory ul on d.lab_id=ul.id
+                           left join device_type dt on d.type=dt.id
+        where d.id=#{id}
+    </select>
+</mapper>

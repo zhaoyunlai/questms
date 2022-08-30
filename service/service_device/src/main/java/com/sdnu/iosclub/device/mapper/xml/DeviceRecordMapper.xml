@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdnu.iosclub.device.mapper.DeviceRecordMapper">
+<select id="getBorrowList" resultType="com.sdnu.iosclub.device.entity.vo.uni.DeviceListVo">
+    SELECT dr.id,dr.device_id as 'deviceId',di.label,di.type,dt.name as 'typeName',di.max_use_time as 'maxUseTime',
+           dr.sign,dr.create_time,dr.state,dr.real_end_time,
+           dr.lab_id as 'labId',ul.name as 'labName',dr.start_time,dr.end_time
+
+
+    FROM `device_record` dr LEFT outer join device_info di on dr.device_id=di.id
+                            left outer join ucenter_laboratory ul on dr.lab_id=ul.id
+                            left outer join device_type dt on di.type=dt.id
+
+    where user_id=#{userId}  and dr.state='1'
+    order by start_time asc
+</select>
+
+    <select id="getRecordList" resultType="com.sdnu.iosclub.device.entity.vo.uni.DeviceListVo">
+        SELECT dr.id,dr.device_id as 'deviceId',di.label,di.type,dt.name as 'typeName',di.max_use_time as 'maxUseTime',
+               dr.sign,dr.create_time,dr.state,dr.real_end_time,
+               dr.lab_id as 'labId',ul.name as 'labName',dr.start_time,dr.end_time
+
+
+        FROM `device_record` dr LEFT outer join device_info di on dr.device_id=di.id
+                                left outer join ucenter_laboratory ul on dr.lab_id=ul.id
+                                left outer join device_type dt on di.type=dt.id
+
+        where user_id=#{userId}
+        order by start_time desc
+    </select>
+
+    <select id="getMyRecordList" resultType="com.sdnu.iosclub.device.entity.vo.uni.RecordListVo">
+        SELECT dr.id,dr.device_id as 'deviceId',di.label,di.type,dt.name as 'typeName',
+               dr.sign,dr.create_time,dr.state,dr.real_end_time,
+               dr.lab_id as 'labId',ul.name as 'labName',dr.start_time,dr.end_time
+
+
+        FROM `device_record` dr LEFT outer join device_info di on dr.device_id=di.id
+                                left outer join ucenter_laboratory ul on dr.lab_id=ul.id
+                                left outer join device_type dt on di.type=dt.id
+
+        where user_id=#{userId} and (real_end_time is null||real_end_time between date_add(now(), interval -1 day) and now())
+        ORDER BY dr.start_time DESC
+
+    </select>
+</mapper>
