@@ -1,6 +1,5 @@
-package com.sdnu.iosclub.serviceoss.service;
+package com.sdnu.iosclub.ucenter.oss.service;
 
-import com.sdnu.iosclub.serviceutil.R;
 import org.springframework.web.multipart.MultipartFile;
 
 /**

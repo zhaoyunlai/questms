@@ -1,15 +1,16 @@
-package com.sdnu.iosclub.serviceoss.controller;
+package com.sdnu.iosclub.ucenter.oss.controller;
 
-import com.sdnu.iosclub.serviceoss.service.OssService;
-import com.sdnu.iosclub.serviceutil.R;
+import com.sdnu.iosclub.ucenter.oss.service.OssService;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @Description
- * @Author Wang Chen
+ * @Author Zhao YunLai
  * @Date 2021/6/8 15:58
  * @Version 1.0
  **/

@@ -1,16 +1,13 @@
-package com.sdnu.iosclub.serviceoss.util;
+package com.sdnu.iosclub.ucenter.oss.util;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
- * @ClassName ConstandPropertiesUtils
- * @Description
- * @Author Wang Chen
- * @Date 2021/1/7 13:56
- * @Version 1.0
- **/
+ * zylai
+ * 阿里云OSS工具类
+ */
 
 //当项目一启动，spring加载之后于，执行接口一个方法
 @Component

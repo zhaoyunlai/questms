@@ -26,4 +26,9 @@ public class UcenterLoginController {
 
         return R.ok().data("roles", "[admin]").data("name", "admin").data("avatar", "https://fanyi-cdn.cdn.bcebos.com/static/translation/img/header/logo_40c4f13.svg");
     }
+
+    @PostMapping ("logout")
+    public R logout(){
+        return R.ok();
+    }
 }
