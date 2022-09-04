@@ -67,6 +67,13 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
+        <!--mybatis分页插件，如果自己写SQL进行分页会使用-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.2.0</version>
+        </dependency>
+
         <!--swagger-->
         <dependency>
             <groupId>io.springfox</groupId>

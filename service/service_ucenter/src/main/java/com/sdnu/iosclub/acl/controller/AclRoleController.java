@@ -2,13 +2,17 @@ package com.sdnu.iosclub.acl.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sdnu.iosclub.acl.entity.AclRole;
 import com.sdnu.iosclub.acl.entity.vo.RoleQuery;
 import com.sdnu.iosclub.acl.entity.vo.UserRoleAssign;
+import com.sdnu.iosclub.acl.entity.vo.UserRoleQuery;
 import com.sdnu.iosclub.acl.service.AclRoleService;
 import com.sdnu.iosclub.acl.service.AclUserRoleService;
 import com.sdnu.iosclub.servicebase.constant.UserConstants;
 import com.sdnu.iosclub.serviceutil.R;
+import com.sdnu.iosclub.ucenter.entity.UcenterUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -95,6 +99,23 @@ public class AclRoleController {
         return R.ok().data("role",role);
     }
 
+    /**
+     * 更改角色状态
+     * @param aclRole 角色对象
+     */
+    @PutMapping("/status")
+    public R changeRoleStatus(@RequestBody AclRole aclRole){
+        Integer status = aclRole.getStatus();
+        if(0==status){
+            aclRole.setStatus(1);
+            return aclRoleService.updateById(aclRole)? R.ok().message("禁用成功") : R.error().message("禁用失败");
+        }else if(1==status){
+            aclRole.setStatus(0);
+            return aclRoleService.updateById(aclRole) ? R.ok().message("启用成功") : R.error().message("启用失败");
+        }
+        return R.error().message("操作失败");
+    }
+
 //=========查询===========
     /**
      * 条件查询角色
@@ -121,12 +142,80 @@ public class AclRoleController {
      * @param userRoleAssign 用户id和角色id列表
      *
      */
-    @PostMapping("/assign")
+    @PostMapping("/assign/user")
     public R assignUserRole(@Validated @RequestBody UserRoleAssign userRoleAssign){
         boolean b = aclUserRoleService.assignUserRole(userRoleAssign);
         return b ? R.ok() : R.error();
     }
 
 
+    /**
+     * 分页查询该角色没有分配的用户
+     * @param roleId 角色id
+     * @return 没有分配的用户信息列表，使用视图对象返回
+     */
+    @PostMapping("/unassigned/{roleId}/{page}/{limit}")
+    public R getUnAssigned(
+            @PathVariable("roleId") String roleId,
+            @PathVariable("page") int page,
+            @PathVariable("limit") int limit,
+            @RequestBody UserRoleQuery userRoleQuery){
+
+        //开启分页
+        PageHelper.startPage(page, limit);
+        //执行查询操作
+        List<UcenterUser> userList = aclUserRoleService.getUnAssigned(roleId,userRoleQuery);
+        //查询之后将结果封装到PageInfo中
+        PageInfo<UcenterUser> pageInfo = new PageInfo<>(userList);
+
+        //返回分页查询结果
+        return R.ok().data("total",pageInfo.getTotal()).data("list",pageInfo.getList());
+    }
+
+    @PostMapping("/assigned/{roleId}/{page}/{limit}")
+    public R getAssigned(
+            @PathVariable("roleId") String roleId,
+            @PathVariable("page") int page,
+            @PathVariable("limit") int limit,
+            @RequestBody UserRoleQuery userRoleQuery
+    ){
+        //开启分页
+        PageHelper.startPage(page, limit);
+        //执行查询操作
+        List<UcenterUser> userList = aclUserRoleService.getAssigned(roleId,userRoleQuery);
+        //查询之后将结果封装到PageInfo中
+        PageInfo<UcenterUser> pageInfo = new PageInfo<>(userList);
+
+        //返回分页查询结果
+        return R.ok().data("total",pageInfo.getTotal()).data("list",pageInfo.getList());
+    }
+
+    /**
+     * 批量给用户分配角色
+     * @param roleId 角色id
+     * @param userIds 用户ids
+     */
+    @PostMapping("/assign/{roleId}")
+    public R assignRoleToUsers(@PathVariable("roleId") String roleId,@RequestBody List<String> userIds){
+        if(userIds == null || userIds.size() < 1){
+            return R.error().message("授权失败，未选择用户");
+        }
+        boolean b = aclUserRoleService.assignRoleToUsers(roleId,userIds);
+        return b ? R.ok() : R.error();
+    }
+
+    /**
+     * 批量取消用户授权
+     * @param roleId 角色id
+     * @param userIds 用户ids
+     */
+    @PostMapping("/unassign/{roleId}")
+    public R unAssignRoleFromUsers(@PathVariable("roleId") String roleId,@RequestBody List<String> userIds){
+        if(userIds == null || userIds.size() < 1){
+            return R.error().message("取消分配失败，未选择用户");
+        }
+        boolean b = aclUserRoleService.unAssignRoleFromUsers(roleId,userIds);
+        return b ? R.ok() : R.error();
+    }
 }
 

@@ -9,9 +9,42 @@
         </foreach>
     </insert>
 
+    <!--批量删除-->
+    <delete id="deleteBatch">
+        delete from acl_user_role where role_id = #{roleId} and user_id in (
+        <foreach collection="userIds" item="item" separator=",">
+            #{item}
+        </foreach>
+        )
+    </delete>
+
 
     <select id="roleHasAssignUser" resultType="com.sdnu.iosclub.acl.entity.AclUserRole">
         select * from acl_user_role where role_id = #{roleId} limit 1
+    </select>
+
+    <!--用户名称，用户学号、工号，用户电话-->
+    <select id="getUnAssigned" resultType="com.sdnu.iosclub.ucenter.entity.UcenterUser">
+        select * from ucenter_user
+        <where>
+            is_deleted = 0 and
+            <if test="userRoleQuery.name != null and userRoleQuery.name != ''">name = #{userRoleQuery.name} and</if>
+            <if test="userRoleQuery.number != null and userRoleQuery.number != ''">number = #{userRoleQuery.number} and</if>
+            <if test="userRoleQuery.phone != null and userRoleQuery.phone != ''">phone = #{userRoleQuery.phone} and</if>
+            id not in (select user_id from acl_user_role where role_id = #{roleId})
+        </where>
+    </select>
+
+    <!--查询角色分配的用户列表-->
+    <select id="getAssigned" resultType="com.sdnu.iosclub.ucenter.entity.UcenterUser">
+        select * from ucenter_user
+        <where>
+            is_deleted = 0 and
+            <if test="userRoleQuery.name != null and userRoleQuery.name != ''">name = #{userRoleQuery.name} and</if>
+            <if test="userRoleQuery.number != null and userRoleQuery.number != ''">number = #{userRoleQuery.number} and</if>
+            <if test="userRoleQuery.phone != null and userRoleQuery.phone != ''">phone = #{userRoleQuery.phone} and</if>
+            id in (select user_id from acl_user_role where role_id = #{roleId})
+        </where>
     </select>
 
 
