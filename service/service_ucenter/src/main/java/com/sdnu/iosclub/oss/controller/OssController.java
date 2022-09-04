@@ -1,6 +1,6 @@
-package com.sdnu.iosclub.ucenter.oss.controller;
+package com.sdnu.iosclub.oss.controller;
 
-import com.sdnu.iosclub.ucenter.oss.service.OssService;
+import com.sdnu.iosclub.oss.service.OssService;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

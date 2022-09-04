@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdnu.iosclub.acl.mapper.AclUserRoleMapper">
+
+    <insert id="insertBatch">
+        insert into acl_user_role(user_id,role_id,create_time,update_time) values
+        <foreach collection="aclUserRoleList" item="item" separator=",">
+            (#{item.userId},#{item.roleId},sysdate(),sysdate())
+        </foreach>
+    </insert>
+
+
+    <select id="roleHasAssignUser" resultType="com.sdnu.iosclub.acl.entity.AclUserRole">
+        select * from acl_user_role where role_id = #{roleId} limit 1
+    </select>
+
+
+</mapper>
