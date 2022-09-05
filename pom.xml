@@ -15,9 +15,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sdnu.iosclub</groupId>
-    <artifactId>labms</artifactId>
+    <artifactId>questms</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>LabMS</name>
+    <name>QuestMS</name>
     <description>Laboratory Management System</description>
     <properties>
         <java.version>1.8</java.version>

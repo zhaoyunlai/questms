@@ -1,4 +1,4 @@
-package com.sdnu.iosclub.ucenter.oss.util;
+package com.sdnu.iosclub.oss.util;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;

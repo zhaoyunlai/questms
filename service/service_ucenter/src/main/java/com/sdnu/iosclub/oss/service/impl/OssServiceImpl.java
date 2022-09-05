@@ -1,10 +1,10 @@
-package com.sdnu.iosclub.ucenter.oss.service.impl;
+package com.sdnu.iosclub.oss.service.impl;
 
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
-import com.sdnu.iosclub.ucenter.oss.service.OssService;
-import com.sdnu.iosclub.ucenter.oss.util.ConstantPropertiesUtils;
+import com.sdnu.iosclub.oss.service.OssService;
+import com.sdnu.iosclub.oss.util.ConstantPropertiesUtils;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
