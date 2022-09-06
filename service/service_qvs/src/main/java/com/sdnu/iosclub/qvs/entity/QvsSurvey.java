@@ -12,7 +12,11 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
+<<<<<<< HEAD
  *
+=======
+ *
+>>>>>>> e3c62cd4ce2ff67ee28535fd780c313b9c334d0d
  * </p>
  *
  * @author wcr
@@ -45,6 +49,7 @@ public class QvsSurvey implements Serializable {
 
     @ApiModelProperty(value = "问卷访问规则 0：公开 1：需要密码")
     private Integer rules;
+
 
     @ApiModelProperty(value = "问卷密码")
     private String password;

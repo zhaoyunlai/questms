@@ -1,5 +1,6 @@
 package com.sdnu.iosclub.qvs.service.impl;
 
+<<<<<<< HEAD
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -13,6 +14,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+=======
+import com.sdnu.iosclub.qvs.entity.QvsOption;
+import com.sdnu.iosclub.qvs.mapper.QvsOptionMapper;
+import com.sdnu.iosclub.qvs.service.QvsOptionService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
+
+>>>>>>> e3c62cd4ce2ff67ee28535fd780c313b9c334d0d
 /**
  * <p>
  *  服务实现类
@@ -24,6 +33,7 @@ import java.util.List;
 @Service
 public class QvsOptionServiceImpl extends ServiceImpl<QvsOptionMapper, QvsOption> implements QvsOptionService {
 
+<<<<<<< HEAD
     @Override
     public List<QvsOption> getAllOption() {
         QueryWrapper<QvsOption> wrapper = new QueryWrapper<>();
@@ -56,4 +66,6 @@ public class QvsOptionServiceImpl extends ServiceImpl<QvsOptionMapper, QvsOption
         wrapper.eq("id",id);
         return this.remove(wrapper);
     }
+=======
+>>>>>>> e3c62cd4ce2ff67ee28535fd780c313b9c334d0d
 }
