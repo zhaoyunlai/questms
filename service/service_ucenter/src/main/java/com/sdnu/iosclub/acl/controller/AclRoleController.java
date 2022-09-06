@@ -117,8 +117,13 @@ public class AclRoleController {
     }
 
 //=========查询===========
+
     /**
-     * 条件查询角色
+     * 条件分页查询角色
+     * @param roleQuery 查询条件
+     * @param page 当前页码
+     * @param limit 每页数据量
+     * @return 角色列表，符合条件的总条数
      */
     @PostMapping ("/list/{page}/{limit}")
     public R getRoleList(@RequestBody RoleQuery roleQuery,
@@ -148,11 +153,13 @@ public class AclRoleController {
         return b ? R.ok() : R.error();
     }
 
-
     /**
-     * 分页查询该角色没有分配的用户
+     * 分页条件查询该角色没有分配的用户
      * @param roleId 角色id
-     * @return 没有分配的用户信息列表，使用视图对象返回
+     * @param page 当前页码
+     * @param limit 每页数据量
+     * @param userRoleQuery 查询条件
+     * @return 符合条件的总条数，用户列表
      */
     @PostMapping("/unassigned/{roleId}/{page}/{limit}")
     public R getUnAssigned(
@@ -172,6 +179,14 @@ public class AclRoleController {
         return R.ok().data("total",pageInfo.getTotal()).data("list",pageInfo.getList());
     }
 
+    /**
+     * 分页条件查询已经分配该角色的用户列表
+     * @param roleId 角色id
+     * @param page 当前页码
+     * @param limit 每页数据量
+     * @param userRoleQuery 查询条件
+     * @return 符合条件的总条数，用户列表
+     */
     @PostMapping("/assigned/{roleId}/{page}/{limit}")
     public R getAssigned(
             @PathVariable("roleId") String roleId,

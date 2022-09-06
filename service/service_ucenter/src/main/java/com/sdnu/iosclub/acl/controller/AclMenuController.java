@@ -36,12 +36,20 @@ public class AclMenuController {
 
 
     /**============基础的curd==========**/
+    /**
+     * 根据menuId查询详细信息
+     * @param menuId 菜单id
+     */
     @GetMapping("/{menuId}")
     public R getMenuById(@PathVariable("menuId") String menuId){
         AclMenu aclMenu = aclMenuService.getById(menuId);
         return R.ok().data("menu", aclMenu);
     }
 
+    /**
+     * 添加新的菜单
+     * @param aclMenu 菜单
+     */
     @PostMapping
     public R addMenu(@Validated @RequestBody AclMenu aclMenu){
         //校验菜单名称是否已经存在
@@ -53,6 +61,10 @@ public class AclMenuController {
         return aclMenuService.save(aclMenu) ? R.ok() : R.error();
     }
 
+    /**
+     * 根据菜单id删除菜单
+     * @param menuId 菜单id
+     */
     @DeleteMapping("/{menuId}")
     public R deleteMenuById(@PathVariable("menuId")String menuId){
         //判断菜单下面是否还有子菜单
@@ -67,6 +79,10 @@ public class AclMenuController {
         return b ? R.ok() : R.error();
     }
 
+    /**
+     * 修改菜单
+     * @param aclMenu 菜单数据
+     */
     @PutMapping
     public R updateMenu(@Validated @RequestBody AclMenu aclMenu){
         //校验菜单名称是否已经存在
@@ -84,6 +100,8 @@ public class AclMenuController {
 
     /**
      * 获取菜单树列表，即获取菜单及其下面的所有子菜单，组成一个菜单树
+     * @param menuQuery 查询条件
+     * @return 菜单列表的树形结构
      */
     @PostMapping("/tree")
     public R getMenuTree(@RequestBody MenuQuery menuQuery){
@@ -91,6 +109,11 @@ public class AclMenuController {
         return R.ok().data("menuTree", menuTree);
     }
 
+    /**
+     * 根据角色id查询该角色分配的菜单，返回树形结构
+     * @param roleId 角色id
+     * @return 菜单树形结构
+     */
     @GetMapping("/role/{roleId}")
     public R getMenuTreeByRoleId(@PathVariable("roleId") String roleId){
 
