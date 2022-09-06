@@ -1,9 +1,6 @@
 package com.sdnu.iosclub.qvs.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sdnu.iosclub.qvs.entity.QvsSurvey;
 import com.sdnu.iosclub.qvs.entity.QvsText;
@@ -14,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 
 /**
  * <p>
@@ -27,7 +23,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/qvs/text")
 public class QvsTextController {
-
 
     @Autowired
     private QvsTextService qvsTextService;

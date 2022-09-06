@@ -12,11 +12,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
-<<<<<<< HEAD
  *
-=======
- *
->>>>>>> e3c62cd4ce2ff67ee28535fd780c313b9c334d0d
  * </p>
  *
  * @author wcr
@@ -62,7 +58,6 @@ public class QvsQuestion implements Serializable {
     @TableField(fill = FieldFill.INSERT)
     @TableLogic
     private Integer isDeleted;
-
 
 
 }

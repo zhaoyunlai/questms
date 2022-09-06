@@ -1,22 +1,16 @@
 package com.sdnu.iosclub.qvs.service.impl;
 
-<<<<<<< HEAD
-=======
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sdnu.iosclub.qvs.entity.QvsSurvey;
->>>>>>> e3c62cd4ce2ff67ee28535fd780c313b9c334d0d
 import com.sdnu.iosclub.qvs.entity.QvsText;
 import com.sdnu.iosclub.qvs.mapper.QvsTextMapper;
 import com.sdnu.iosclub.qvs.service.QvsTextService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-=======
 import java.util.List;
 
->>>>>>> e3c62cd4ce2ff67ee28535fd780c313b9c334d0d
 /**
  * <p>
  *  服务实现类
@@ -28,8 +22,6 @@ import java.util.List;
 @Service
 public class QvsTextServiceImpl extends ServiceImpl<QvsTextMapper, QvsText> implements QvsTextService {
 
-<<<<<<< HEAD
-=======
     @Override
     public List<QvsText> getAllText() {
         QueryWrapper<QvsText>wrapper=new QueryWrapper<>();
@@ -62,5 +54,4 @@ public class QvsTextServiceImpl extends ServiceImpl<QvsTextMapper, QvsText> impl
         wrapper.eq("id",id);
         return this.remove(wrapper);
     }
->>>>>>> e3c62cd4ce2ff67ee28535fd780c313b9c334d0d
 }

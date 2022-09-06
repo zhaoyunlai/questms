@@ -1,8 +1,6 @@
 package com.sdnu.iosclub.qvs.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sdnu.iosclub.qvs.entity.QvsResult;
 import com.sdnu.iosclub.qvs.entity.QvsSurvey;
@@ -12,6 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +25,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/qvs/result")
 public class QvsResultController {
-
     @Autowired
     private QvsResultService qvsResultService;
 

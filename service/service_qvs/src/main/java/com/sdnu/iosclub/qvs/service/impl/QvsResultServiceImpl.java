@@ -1,24 +1,17 @@
 package com.sdnu.iosclub.qvs.service.impl;
 
-<<<<<<< HEAD
-import com.sdnu.iosclub.qvs.entity.QvsResult;
-=======
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sdnu.iosclub.qvs.entity.QvsResult;
 import com.sdnu.iosclub.qvs.entity.QvsSurvey;
->>>>>>> e3c62cd4ce2ff67ee28535fd780c313b9c334d0d
 import com.sdnu.iosclub.qvs.mapper.QvsResultMapper;
 import com.sdnu.iosclub.qvs.service.QvsResultService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-=======
 import java.sql.Wrapper;
 import java.util.List;
 
->>>>>>> e3c62cd4ce2ff67ee28535fd780c313b9c334d0d
 /**
  * <p>
  *  服务实现类
@@ -30,8 +23,6 @@ import java.util.List;
 @Service
 public class QvsResultServiceImpl extends ServiceImpl<QvsResultMapper, QvsResult> implements QvsResultService {
 
-<<<<<<< HEAD
-=======
 
     @Override
     public List<QvsResult> getAllResult() {
@@ -65,5 +56,4 @@ public class QvsResultServiceImpl extends ServiceImpl<QvsResultMapper, QvsResult
         wrapper.eq("id",id);
         return this.remove(wrapper);
     }
->>>>>>> e3c62cd4ce2ff67ee28535fd780c313b9c334d0d
 }

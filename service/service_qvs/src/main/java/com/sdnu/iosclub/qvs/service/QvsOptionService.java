@@ -1,16 +1,12 @@
 package com.sdnu.iosclub.qvs.service;
 
-<<<<<<< HEAD
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sdnu.iosclub.qvs.entity.QvsOption;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.sdnu.iosclub.qvs.entity.QvsSurvey;
-
 import java.util.List;
-=======
 import com.sdnu.iosclub.qvs.entity.QvsOption;
 import com.baomidou.mybatisplus.extension.service.IService;
->>>>>>> e3c62cd4ce2ff67ee28535fd780c313b9c334d0d
 
 /**
  * <p>
@@ -22,7 +18,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface QvsOptionService extends IService<QvsOption> {
 
-<<<<<<< HEAD
     /**
      * 获取所有Option信息
      * @return 所有Option信息
@@ -57,6 +52,4 @@ public interface QvsOptionService extends IService<QvsOption> {
      * @return 是否删除成功
      */
     boolean deleteOption(String id);
-=======
->>>>>>> e3c62cd4ce2ff67ee28535fd780c313b9c334d0d
 }

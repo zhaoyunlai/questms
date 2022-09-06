@@ -1,7 +1,5 @@
 package com.sdnu.iosclub.qvs.service;
 
-import com.sdnu.iosclub.qvs.entity.QvsText;
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sdnu.iosclub.qvs.entity.QvsSurvey;
 import com.sdnu.iosclub.qvs.entity.QvsText;
@@ -28,5 +26,4 @@ public interface QvsTextService extends IService<QvsText> {
     boolean updateText(QvsText qvsText);
 
     boolean deleteText(String id);
-
 }
