@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--核心配置文件主要用于配置连接数据库的环境以及MyBatis的全局配置信息-->
+<configuration>
+    <!--
+        MyBatis核心配置文件中的标签必须要按照指定的顺序配置：
+        (properties?,settings?,typeAliases?,typeHandlers?,objectFactory?,
+        objectWrapperFactory?,reflectorFactory?,plugins?,environments?,
+        databaseIdProvider?,mappers?)
+    -->
+
+    <settings>
+        <!--开启驼峰命名法映射-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--指定mybatis的日志输出-->
+        <setting name="logImpl" value="org.apache.ibatis.logging.stdout.StdOutImpl"/>
+    </settings>
+
+    <plugins>
+        <!--设置分页插件-->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"/>
+    </plugins>
+
+</configuration>

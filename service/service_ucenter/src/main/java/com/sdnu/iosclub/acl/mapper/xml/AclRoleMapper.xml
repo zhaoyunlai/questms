@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdnu.iosclub.acl.mapper.AclRoleMapper">
+
+    <select id="checkRoleNameUnique" resultType="com.sdnu.iosclub.acl.entity.AclRole">
+        select * from acl_role where role_name = #{roleName} limit 1
+    </select>
+
+    <select id="checkRoleKeyUnique" resultType="com.sdnu.iosclub.acl.entity.AclRole">
+        select * from acl_role where role_key = #{roleKey} limit 1
+    </select>
+
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdnu.iosclub.acl.mapper.AclMenuMapper">
+
+    <!--配置文件的注解开启了驼峰映射，这里暂不需要基础的映射-->
+    <resultMap type="com.sdnu.iosclub.acl.entity.AclMenu" id="MenuResult">
+        <id property="menuId" column="menu_id"/>
+
+    </resultMap>
+
+    <select id="checkMenuNameUnique" resultType="com.sdnu.iosclub.acl.entity.AclMenu">
+        select * from acl_menu where menu_name = #{menuName} and parent_id = #{parentId} limit 1
+    </select>
+
+    <select id="hasChildren" resultType="com.sdnu.iosclub.acl.entity.AclMenu">
+        select * from acl_menu where parent_id = #{menuId} limit 1
+    </select>
+
+</mapper>

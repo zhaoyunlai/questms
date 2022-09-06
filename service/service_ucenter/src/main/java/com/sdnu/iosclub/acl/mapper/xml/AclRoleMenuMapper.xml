@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdnu.iosclub.acl.mapper.AclRoleMenuMapper">
+
+    <select id="menuHasAssignRole" resultType="com.sdnu.iosclub.acl.entity.AclRoleMenu">
+        select * from acl_role_menu where menu_id = #{menuId} limit 1
+    </select>
+
+
+    <select id="selectMenuByRoleId" resultType="com.sdnu.iosclub.acl.entity.AclMenu">
+        select * from acl_menu
+        where menu_id in (
+            select rm.menu_id from acl_role_menu rm where role_id = #{roleId}
+        )
+    </select>
+
+    <insert id="insertBatch">
+        insert into acl_role_menu values
+        <foreach collection="roleMenuList" item="item" separator=",">
+            (#{item.roleId},#{item.menuId},sysdate(),sysdate())
+        </foreach>
+    </insert>
+</mapper>

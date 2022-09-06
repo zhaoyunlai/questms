@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdnu.iosclub.ucenter.mapper.UcenterLabTeacherMapper">
+
+    <select id="getTeacherDetailsVoList" resultType="com.sdnu.iosclub.ucenter.entity.vo.TeacherDetailsVo">
+        SELECT ultd.id,ut.id AS teacherId,ut.name AS teacherName,ult.id AS labTeacherId,ultd.achievement,ultd.sort,ultd.award_time,ultd.create_time
+        FROM ucenter_lab_teacher ult LEFT OUTER JOIN ucenter_lab_teacher_details ultd ON ult.id=ultd.lab_teacher_id AND ultd.is_deleted=0
+                                     LEFT OUTER JOIN ucenter_teacher ut ON ult.teacher_id=ut.id AND ut.is_deleted=0
+        WHERE ult.lab_id=#{labId}
+        ORDER BY ut.create_time
+    </select>
+</mapper>
