@@ -2,6 +2,7 @@ package com.sdnu.iosclub.qvs.mapper;
 
 import com.sdnu.iosclub.qvs.entity.QvsResult;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -12,5 +13,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2022-09-05
  */
 public interface QvsResultMapper extends BaseMapper<QvsResult> {
+
+
 
 }

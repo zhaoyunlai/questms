@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.*;
 
 import java.util.Date;
 import java.io.Serializable;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -45,6 +47,14 @@ public class QvsQuestion implements Serializable {
 
     @ApiModelProperty(value = "排序号")
     private Integer orderby;
+
+    @ApiModelProperty("选择型问题的选项")
+    @TableField(exist = false)//忽略该成员变量和数据库字段之间的映射
+    private List<QvsOption> options;
+
+    @ApiModelProperty("填空型问题的作答记录")
+    @TableField(exist = false)//忽略该成员变量和数据库字段之间的映射
+    private List<QvsText> texts;
 
     @ApiModelProperty(value = "记录创建时间")
     @TableField(fill = FieldFill.INSERT)

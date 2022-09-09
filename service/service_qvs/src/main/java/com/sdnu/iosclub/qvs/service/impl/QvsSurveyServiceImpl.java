@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Wrapper;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -56,4 +57,39 @@ public class QvsSurveyServiceImpl extends ServiceImpl<QvsSurveyMapper, QvsSurvey
         wrapper.eq("id",id);
         return this.remove(wrapper);
     }
+
+    @Override
+    public List<QvsSurvey> getSurveyByLike(String title) {
+        QueryWrapper<QvsSurvey> wrapper = new QueryWrapper<>();
+        wrapper.like("title",title);
+        wrapper.orderByDesc("update_time");
+        return this.list(wrapper);
+    }
+
+    @Override
+    public List<QvsSurvey> getSurveyByUserId(String userId) {
+        QueryWrapper<QvsSurvey> wrapper = new QueryWrapper<>();
+        wrapper.eq("creator",userId);
+        wrapper.orderByDesc("update_time");
+        return this.list(wrapper);
+    }
+
+    @Override
+    public boolean updateSurveyState(String id, Integer state) {
+        QvsSurvey survey = this.getById(id);
+        survey.setState(state);
+        return this.updateById(survey);
+    }
+
+    @Override
+    public QvsSurvey getSurveyInfoById(String id) {
+        return this.baseMapper.getSurveyInfoById(id);
+    }
+
+    @Override
+    public List<Map<String, Object>> getSurveyDataById(String id) {
+        return this.baseMapper.getSurveyDataById(id);
+    }
+
+
 }

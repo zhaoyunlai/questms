@@ -2,6 +2,9 @@ package com.sdnu.iosclub.qvs.mapper;
 
 import com.sdnu.iosclub.qvs.entity.QvsOption;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +15,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2022-09-05
  */
 public interface QvsOptionMapper extends BaseMapper<QvsOption> {
+
+    List<QvsOption> getOptionById(@Param("id") String id);
 
 }

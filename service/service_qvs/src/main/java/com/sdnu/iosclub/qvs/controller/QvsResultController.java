@@ -83,5 +83,15 @@ public class QvsResultController {
     public R deleteSurvey(@PathVariable String id){
         return qvsResultService.deleteResult(id)?R.ok().message("删除成功"):R.error().message("删除失败");
     }
+
+    /**查询用户填写过的问卷的信息
+     * @param userId 用户id
+     * @return 用户填写过的问卷的信息
+     */
+    @ApiOperation("查询用户填写过的问卷信息")
+    @GetMapping("getSurveyByUserId/{userId}")
+    public R getSurveyByUserId(@PathVariable String userId){
+        return R.ok().data("items",qvsResultService.getSurveyByUserId(userId));
+    }
 }
 
