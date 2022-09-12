@@ -52,9 +52,17 @@ public class QvsQuestion implements Serializable {
     @TableField(exist = false)//忽略该成员变量和数据库字段之间的映射
     private List<QvsOption> options;
 
+    @ApiModelProperty("选择型问题的选项数量")
+    @TableField(exist = false)//忽略该成员变量和数据库字段之间的映射
+    private Integer optionNum;
+
     @ApiModelProperty("填空型问题的作答记录")
     @TableField(exist = false)//忽略该成员变量和数据库字段之间的映射
     private List<QvsText> texts;
+
+    @ApiModelProperty("填空型问题的作答记录数量")
+    @TableField(exist = false)//忽略该成员变量和数据库字段之间的映射
+    private Integer textNum;
 
     @ApiModelProperty(value = "记录创建时间")
     @TableField(fill = FieldFill.INSERT)

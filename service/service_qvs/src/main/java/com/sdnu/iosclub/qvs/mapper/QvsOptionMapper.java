@@ -18,4 +18,8 @@ public interface QvsOptionMapper extends BaseMapper<QvsOption> {
 
     List<QvsOption> getOptionById(@Param("id") String id);
 
+    List<QvsOption> getOptionDataById(@Param("id") String id);
+
+    Integer getOptionNum(@Param("id") String id);
+
 }

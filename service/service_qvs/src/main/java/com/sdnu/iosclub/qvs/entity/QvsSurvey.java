@@ -70,6 +70,10 @@ public class QvsSurvey implements Serializable {
     @TableField(exist = false)//忽略该成员变量和数据库字段之间的映射
     private List<QvsQuestion> questions;
 
+    @ApiModelProperty("问卷包含的问题个数")
+    @TableField(exist = false)//忽略该成员变量和数据库字段之间的映射
+    private Integer questionNum;
+
     @ApiModelProperty(value = "记录创建时间")
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;

@@ -13,16 +13,24 @@
         </collection>
     </resultMap>
 
+    <resultMap id="getSurveyDataByIdResultMap" type="QvsSurvey">
+        <id column="id" property="id"/>
+        <association property="questionNum" column="id" select="com.sdnu.iosclub.qvs.mapper.QvsQuestionMapper.getQuestionNum" javaType="Integer"></association>
+        <collection
+                property="questions"
+                column="id"
+                select="com.sdnu.iosclub.qvs.mapper.QvsQuestionMapper.getQuestionDataById"
+                ofType="QvsQuestion">
+            <id property="id" column="id"/>
+        </collection>
+    </resultMap>
+
     <select id="getSurveyInfoById" resultMap="getSurveyInfoByIdResultMap">
         select * from qvs_survey where id = #{id} order by update_time desc
     </select>
 
-    <select id="getSurveyDataById" resultType="map">
-        select * from qvs_survey
-            left outer join qvs_question on id = survey_id
-            left outer join qvs_option on id = question_id
-            left outer join qvs_result on id = option_id
-        where id = #{id};
+    <select id="getSurveyDataById" resultMap="getSurveyDataByIdResultMap">
+        select * from qvs_survey where id = #{id} order by update_time desc
     </select>
 
 </mapper>

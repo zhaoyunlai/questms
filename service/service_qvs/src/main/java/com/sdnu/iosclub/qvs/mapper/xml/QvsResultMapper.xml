@@ -2,4 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sdnu.iosclub.qvs.mapper.QvsResultMapper">
 
+    <select id="getResultNum" resultType="Integer">
+        select count(*) from qvs_result where option_id = #{id}
+    </select>
+
+    <select id="getResultDataNum" resultType="QvsResult">
+        select * from qvs_result where option_id = #{id} order by update_time desc
+    </select>
+
 </mapper>

@@ -52,6 +52,10 @@ public class QvsOption implements Serializable {
     @TableField(exist = false)//忽略该成员变量和数据库字段之间的映射
     private List<QvsResult> results;
 
+    @ApiModelProperty("选择了该选项的所有记录的数量")
+    @TableField(exist = false)//忽略该成员变量和数据库字段之间的映射
+    private Integer resultNum;
+
     @ApiModelProperty(value = "记录创建时间")
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;

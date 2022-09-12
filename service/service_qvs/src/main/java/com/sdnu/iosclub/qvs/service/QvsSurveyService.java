@@ -88,5 +88,5 @@ public interface QvsSurveyService extends IService<QvsSurvey> {
      * @param id 要查询的问卷id
      * @return id对应的问卷的结构和数据
      */
-    List<Map<String,Object>> getSurveyDataById(String id);
+    QvsSurvey getSurveyDataById(String id);
 }

@@ -141,7 +141,7 @@ public class QvsSurveyController {
     @ApiOperation("通过id查询问卷结构和作答数据")
     @GetMapping("getSurveyDataById/{id}")
     public R getSurveyDataById(@PathVariable String id){
-        return R.ok().data("items",qvsSurveyService.getSurveyDataById(id));
+        return R.ok().data("item",qvsSurveyService.getSurveyDataById(id));
     }
 }
 

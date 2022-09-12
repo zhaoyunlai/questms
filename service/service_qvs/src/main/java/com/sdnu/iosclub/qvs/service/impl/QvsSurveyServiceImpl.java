@@ -87,8 +87,9 @@ public class QvsSurveyServiceImpl extends ServiceImpl<QvsSurveyMapper, QvsSurvey
     }
 
     @Override
-    public List<Map<String, Object>> getSurveyDataById(String id) {
-        return this.baseMapper.getSurveyDataById(id);
+    public QvsSurvey getSurveyDataById(String id) {
+        QvsSurvey qvsSurvey = this.baseMapper.getSurveyDataById(id);
+        return qvsSurvey;
     }
 
 

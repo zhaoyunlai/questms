@@ -13,8 +13,36 @@
         </collection>
     </resultMap>
 
+    <resultMap id="getQuestionDataByIdResultMap" type="QvsQuestion">
+        <id column="id" property="id"/>
+        <association property="optionNum" select="com.sdnu.iosclub.qvs.mapper.QvsOptionMapper.getOptionNum" javaType="Integer" column="id"/>
+        <association property="textNum" select="com.sdnu.iosclub.qvs.mapper.QvsTextMapper.getTextNum" javaType="Integer" column="id"/>
+        <collection
+                property="options"
+                ofType="QvsOption"
+                select="com.sdnu.iosclub.qvs.mapper.QvsOptionMapper.getOptionDataById"
+                column="id">
+            <id property="id" column="id"/>
+        </collection>
+        <collection
+                property="texts"
+                ofType="QvsText"
+                select="com.sdnu.iosclub.qvs.mapper.QvsTextMapper.getTextDataById"
+                column="id">
+            <id property="id" column="id"/>
+        </collection>
+    </resultMap>
+
     <select id="getQuestionById" resultMap="getQuestionByIdResultMap">
         select * from qvs_question where survey_id = #{id} order by orderby
+    </select>
+
+    <select id="getQuestionDataById" resultMap="getQuestionDataByIdResultMap">
+        select * from qvs_question where survey_id = #{id} order by orderby
+    </select>
+
+    <select id="getQuestionNum" resultType="Integer">
+        select count(*) from qvs_question where survey_id = #{id}
     </select>
 
 </mapper>

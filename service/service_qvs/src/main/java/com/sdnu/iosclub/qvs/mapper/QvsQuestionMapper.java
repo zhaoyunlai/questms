@@ -16,4 +16,8 @@ import java.util.List;
  */
 public interface QvsQuestionMapper extends BaseMapper<QvsQuestion> {
     List<QvsQuestion> getQuestionById(@Param("id") String id);
+
+    List<QvsQuestion> getQuestionDataById(@Param("id") String id);
+
+    Integer getQuestionNum(@Param("id") String id);
 }

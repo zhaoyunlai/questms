@@ -2,4 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sdnu.iosclub.qvs.mapper.QvsTextMapper">
 
+    <select id="getTextNum" resultType="Integer">
+        select count(*) from qvs_text where question_id = #{id} order by update_time desc
+    </select>
+
+    <select id="getTextDataById" resultType="QvsText">
+        select * from qvs_text where question_id = #{id}
+    </select>
+
 </mapper>

@@ -19,6 +19,6 @@ public interface QvsSurveyMapper extends BaseMapper<QvsSurvey> {
 
     QvsSurvey getSurveyInfoById(@Param("id") String id);
 
-    List<Map<String,Object>> getSurveyDataById(@Param("id") String id);
+    QvsSurvey getSurveyDataById(@Param("id") String id);
 
 }
