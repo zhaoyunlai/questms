@@ -211,6 +211,15 @@
                 </includes>
                 <filtering>false</filtering>
             </resource>
+
+            <!--打包规则，打包时将resource文件夹下所有的xml文件打包进去-->
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
         </resources>
     </build>
 
